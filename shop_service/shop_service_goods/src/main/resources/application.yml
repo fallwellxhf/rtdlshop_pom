@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    url: jdbc:mysql:///goshopping
+    username: root
+    password: 123
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      min-idle: 5
+      max-active: 100
+      max-wait: 60000
+      initial-size: 5
+      stat-view-servlet:
+        #开启监控中心
+        enabled: true
+        url-pattern: /druid/*
+        login-password: admin
+        login-username: admin
+        allow: 127.0.0.1
+        #deny:
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+
+dubbo:
+  application:
+    name: goods_service
+  registry:
+    address: zookeeper://192.168.187.128:2181
+  protocol:
+    name: dubbo
+    port: 20880
+server:
+  port: 9090
